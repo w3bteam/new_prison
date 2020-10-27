@@ -1,7 +1,10 @@
 # Проект для души
 # "Новая тюряга"
 
-Конфиги для Apache! Прописываются в файл httpd.conf:  
+Конфиги для Apache! Прописываются в файл httpd.conf:
+Listen 8000  
+Define SRVROOT "/path/to/your/directory"  
+ServerRoot "${SRVROOT}"  
 NameVirtualHost newprison.com:8000  
 Include "${SRVROOT}/new_prison"  
 
