@@ -2,7 +2,7 @@
 # "Новая тюряга"
 
 Конфиги для Apache! Прописываются в файл httpd.conf:  
-NameVirtualHost new_prison.com:8000  
+NameVirtualHost newprison.com:8000  
 Include "${SRVROOT}/new_prison"  
 
 Перед этим устанавливаем в файл C:\Windows\System32\drivers\etc\hosts  
