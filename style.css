@@ -1,0 +1,52 @@
+#main-index {
+  font-style: italic;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+.login-form {
+  width: 20%;
+  margin-top: 50px;
+  margin-left: 150px;
+}
+
+.input {
+  width: 100%;
+  margin-top: 20px;
+  height: 40px;
+  display: table;
+}
+
+.input .left-field {
+  float: left;
+  text-align: left;
+  margin-top: 3px;
+  margin-right: 0px;
+  margin-bottom: 3px;
+  margin-left: 0px;
+  height: 35px;
+  line-height: 35px;
+}
+
+.input .right-field {
+  float: right;
+  margin-top: 8px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  margin-left: 0px;
+}
+
+.input input {
+  font-size: 16px;
+}
+
+.fpass {
+  width: 100%;
+  margin-top: 3px;
+  text-align: right;
+}
+
+.form_button {
+  text-align: center;
+  margin-top: 10px;
+}
