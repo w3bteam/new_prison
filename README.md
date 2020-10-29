@@ -4,8 +4,10 @@
 Конфиги для Apache! Прописываются в файл httpd.conf:  
 Listen 8000  
 Define APP "/путь/до/директории/где/находится/new_prison"  
-NameVirtualHost newprison.com:8000  
+NameVirtualHost *:8000  
 Include "${APP}/new_prison/conf"  
+
+Сайт пока на newprison.com:8000. Пока не разобрался как убрать порт из адреса в Apache. Так что еще проапдейчу.  
 
 Перед этим устанавливаем в файл C:\Windows\System32\drivers\etc\hosts  
 Для Mac OS - /private/etc/hosts  
