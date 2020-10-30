@@ -19,3 +19,7 @@ Include "${APP}/new_prison/conf"
 Нельзя лить изменения сразу в master. Изменения делать в отдельных ветках. Добавлять через pull request. Пример:  
 aavksentev/bugfix_описание(для багов) или aavksentev/feature_описание(для фич)  
 Вместо aavksentev пишите что то свое.  
+
+Для обучения git'у:  
+
+https://learngitbranching.js.org/?locale=ru_RU 
