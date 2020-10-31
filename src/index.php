@@ -1,38 +1,33 @@
 <?php
-session_start();
-$session = session_id();
+session_start();if($_SESSION['seslogin'] = ""){header("Location: 1.php");echo 'Вы не авторизованы!';exit;}
+if($_GET['do'] == 'logout'){
+ unset($_SESSION['admin']);
+ session_destroy();
+header("Location: 1.php");
+}?>
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Тег INPUT</title>
+ </head>
+ <body>
+<header>
+<nav>
+        <a href="index.php?page=1">Главная страница сайта</a> |
+        <!-- <a href="index.php?page=2">Логин</a>	-->
+	<a href="index.php?do=logout">Logout</a>
+</nav>
+</header>
+
+<?php
+$page = (isset($_GET['page']) ? $_GET['page'] : 'main');
+if(basename($page).'.php' !== 0 ){
+include basename($page).'.php';}
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Р’С…РѕРґ</title>
-  <link rel="stylesheet" href="style.css">
-  <script type="text/javascript" src="script/script.js"></script>
-</head>
-<body>
-  <section id="main-index">
-    <h1 style="margin-top: 25px;">Members login</h1>
-    <form class="login-form" method="post" action="script/php_ajax.php">
-      <div class="input">
-        <div class="left-field">Username:</div>
-        <div class="right-field">
-          <input name="username" type="text">
-        </div>
-      </div>
-      <div class="input">
-        <div class="left-field">Password:</div>
-        <div class="right-field">
-          <input name="password" type="password">
-        </div>
-      </div>
-      <div class="fpass">
-        <a href="new_site.php">Forgot your password?</a>
-      </div>
-      <div class="fbutton">
-        <button id="login_form_button" class="form_button" type="submit" onclick="EnterFunc()">Login</button>
-      </div>
-    </form>
-  </section>
-</body>
+<footer>
+    Сайт сделан недавно и все права принадлежат его создателю :)
+</footer>
+ </body>
 </html>
