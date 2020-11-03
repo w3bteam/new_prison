@@ -1,10 +1,13 @@
 <?php
+/*
+* Этот код не будет использоваться!!!
+*/
+include '../Database.php';
 
-$connectToDb = mysqli_connect('localhost:4000', 'root', '1234', 'testdb');
+$database = new SQLDatabase();
+$conn = $database->GetConnection();
 
-if (!$connectToDb) {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-}
+//$database = new SQLDatabase('localhost:4000', 'root', '1234', 'testdb');
 
 $username = $_POST['username'];
 $password = $_POST['password'];
@@ -13,10 +16,10 @@ $password = $_POST['password'];
 $query = 'SELECT username, password
 FROM users
 WHERE username=\'' . $username . '\' AND password=\'' . $password . '\'';
-$result = mysqli_query($connectToDb, $query);
+$result = $database->Query($query);
 
 if ($username != "" && $password != "") {
-  if (mysqli_num_rows($result) > 0) {
+  if ($result > 0) {
     header('Location: ../phpinfo.php');
     exit();
   } else {
