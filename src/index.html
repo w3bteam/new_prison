@@ -10,8 +10,8 @@
     <!-- jQuery + Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <script src="script/ajax.js"></script>
-    <script type="text/javascript" src="script/header.js"></script>
+    <script src="script/header.js"></script>
+    <script src="script/signin.js"></script>
 </head>
 
 <body>
@@ -37,7 +37,7 @@
     <div class="App">
         <div class="vertical-center">
             <div class="inner-block">
-                <form action="" method="post">
+                <form action="signin.php" method="post" id="data">
                     <h3>Login</h3>
                     <div class="form-group">
                         <label>Username</label>
@@ -50,7 +50,7 @@
                     </div>
 
                     <button type="submit" name="login" id="sign_in"
-                        class="btn btn-outline-primary btn-lg btn-block" onclick="">Sign
+                        class="btn btn-outline-primary btn-lg btn-block">Sign
                         in</button>
                 </form>
             </div>
