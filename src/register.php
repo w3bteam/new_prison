@@ -1,47 +1,82 @@
 <?php
 
-include 'obj/Database.php';
-include 'obj/Player.php';
-include 'obj/Error.php';
+ob_start();
 
-$db = new Database();
+if(!isset($_SESSION)) {
+   session_start();
+}
+
+require_once 'obj/Database.php';
+require_once 'obj/Players.php';
+require_once 'obj/Error.php';
+
 $error = new ErrorHandle();
 
-if (isset($_POST["submit"])) {
+
+if (isset($_POST["username"])) {
+
    $username = $_POST["username"];
    $email    = $_POST["email"];
    $mobile   = $_POST["mobilenumber"];
    $pwd      = $_POST["password"];
 
-   $dbQuery = $db->prepare('SELECT FROM * users WHERE username = :username');
-   $dbQuery->execute(array(':username' => $username));
-   $rowCount = $dbQuery->rowCount();
+   $db = new Database();
+   $db->GetConnection();
+   //echo $username . $email . $mobile . $pwd;
 
-   if(!empty($username) && !empty($email) && !empty($mobile) && !empty($pwd) && $rowCount == 0)
-   {
-      $player = new Player($db);
-      $player->Add($username, $email, $mobile, $pwd);
+   try {
+      $dbQuery = $db->connection->prepare('SELECT * FROM users WHERE username = :username');
+      $dbQuery->execute(array(':username' => $username));
+      $rowCount = $dbQuery->rowCount();
+
+      //echo "\n$rowCount";
+
+   } catch(PDOException $exception)  {
+      echo "Connection error: " . $exception->getMessage();
+   }
+
+
+   if(!empty($username) && !empty($email) &&
+      !empty($mobile) && !empty($pwd) && $rowCount == 0) {
+
+      $player = new Player($db->connection, $username, $email, $mobile, $pwd);
+      $player->Add();
+
+      header("Location: index.html");
+
    } else {
       if($rowCount > 0) {
-         echo "$error->UsernameExist";
+         $err = $error->UsernameExist();
+         echo "$err";
       }
 
       if(empty($username)) {
-         echo "1 $error->EmptyField";
+         $err = $error->EmptyField();
+         echo "\n1 $err";
       }
 
       if(empty($email)) {
-         echo "2 $error->EmptyField";
+         $err = $error->EmptyField();
+         echo "\n2 $err";
       }
 
       if(empty($mobile)) {
-         echo "3 $error->EmptyField";
+         $err = $error->EmptyField();
+         echo "\n3 $err";
       }
 
       if(empty($pwd)) {
-         echo "4 $error->EmptyField";
+         $err = $error->EmptyField();
+         echo "\n4 $err";
       }
    }
+
+   $db->connection = null;
+
+} else {
+   header("Location: error.html");
 }
+
+session_destroy();
 
 ?>
