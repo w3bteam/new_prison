@@ -44,7 +44,7 @@ class Player
    }
 
    public function Delete()
-   {   
+   {
       try {
          $dbQuery = $this->database->prepare('DELETE FROM users WHERE id=:id LIMIT 1');
          $dbQuery->execute(array(':id' => $this->id));

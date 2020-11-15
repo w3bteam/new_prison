@@ -38,5 +38,24 @@ class Database
       return $id;
    }
 
+   public function PlayersTable()
+   {
+      try {
+         $dbQuery = $this->connection->prepare('SELECT username, result
+            FROM users ORDER BY result');
+         $dbQuery->execute();
+         $arr = [];
+         $inc = 0;
+         while ($row = $dbQuery->fetch(PDO::FETCH_ASSOC)) {
+            $jsonArrayObject = (array('username' => $row["username"], 'result' => $row["result"]));
+            $arr[$inc] = $jsonArrayObject;
+            $inc++;
+         }
+
+         return $arr;
+      } catch (PDOException $exception) {
+         echo "Error: " . $exception->getMessage();
+      }
+   }
 }
 ?>
