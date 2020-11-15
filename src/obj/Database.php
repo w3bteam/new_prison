@@ -42,7 +42,7 @@ class Database
    {
       try {
          $dbQuery = $this->connection->prepare('SELECT username, result
-            FROM users ORDER BY result');
+            FROM users ORDER BY result DESC');
          $dbQuery->execute();
          $arr = [];
          $inc = 0;
