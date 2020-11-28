@@ -4,10 +4,6 @@ header('Content-Type: application/json');
 
 ob_start();
 
-if(!isset($_SESSION)) {
-   session_start();
-}
-
 require_once 'obj/Players.php';
 require_once 'obj/Database.php';
 

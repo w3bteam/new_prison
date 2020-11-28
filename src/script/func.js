@@ -23,4 +23,14 @@ function ParseJSON(data)
    return jsonArr;
 }
 
-export { ParseJSON };
+function CheckCookie(location = "../index.html")
+{
+   if (document.cookie != "") {
+      console.log(document.cookie);
+      return;
+   } else {
+      window.location.href = location;
+   }
+}
+
+export { ParseJSON, CheckCookie };

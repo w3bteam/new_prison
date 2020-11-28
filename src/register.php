@@ -42,41 +42,42 @@ if (isset($_POST["username"])) {
       $player = new Player($db->connection, $username, $email, $mobile, $pwd);
       $player->Add();
 
-      header("Location: index.html");
+      echo "../index.html";
 
    } else {
       if($rowCount > 0) {
          $err = $error->UsernameExist();
-         echo "$err";
+         echo "\n1 $err";
       }
 
       if(empty($username)) {
          $err = $error->EmptyField();
-         echo "\n1 $err";
+         echo "\n2 $err";
       }
 
       if(empty($email)) {
          $err = $error->EmptyField();
-         echo "\n2 $err";
+         echo "\n3 $err";
       }
 
       if(empty($mobile)) {
          $err = $error->EmptyField();
-         echo "\n3 $err";
+         echo "\n4 $err";
       }
 
       if(empty($pwd)) {
          $err = $error->EmptyField();
-         echo "\n4 $err";
+         echo "\n5 $err";
       }
    }
 
    $db->connection = null;
 
 } else {
-   header("Location: error.html");
+   echo "../error.html";
 }
 
+setcookie("PHPSESSID", "", time() - 3600);
 session_destroy();
 
 ?>
