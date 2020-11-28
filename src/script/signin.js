@@ -10,7 +10,9 @@ $(document).ready(function()
          data: $( '#data' ).serialize(),
          success: function(data) {
             console.log(data);
-            CheckCookie(data);
+            if (data === "../homepage.html") {
+               CheckCookie(data);
+            }
          },
          error: function(data) {
             console.log(data);
