@@ -2,12 +2,12 @@
 
 ob_start();
 
+setcookie("name", "", time() - 8400);
+
 require_once 'obj/Players.php';
 require_once 'obj/Database.php';
 require_once 'obj/Authenticate.php';
 require_once 'obj/Error.php';
-
-$error = new ErrorHandle();
 
 if (isset($_POST["name_signin"])) {
    $userSignIn = $_POST["name_signin"];
@@ -18,12 +18,13 @@ if (isset($_POST["name_signin"])) {
       $auth = new Authentication($userSignIn, $passSignIn);
       $pwd = $auth->Auth();
 
-      echo $pwd;
+      //echo $pwd;
 
       if ($pwd) {
          if (!isset($_SESSION)) {
             session_start();
          }
+         setcookie("name", $userSignIn, time() + (86400 * 30));
          echo "../homepage.html";
       } else {
          //Здесь надо будет переделать хэндл ошибки

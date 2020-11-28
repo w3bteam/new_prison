@@ -9,7 +9,7 @@ $(document).ready(function()
          url: '../signin.php',
          data: $( '#data' ).serialize(),
          success: function(data) {
-            console.log(data);
+            console.log('data', data);
             if (data === "../homepage.html") {
                CheckCookie(data);
             }
