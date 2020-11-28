@@ -1,3 +1,5 @@
+import { CheckCookie } from './func.js';
+
 $(document).ready(function()
 {
    $( '#data' ).submit(function(event) {
@@ -8,6 +10,9 @@ $(document).ready(function()
          data: $(this).serialize(),
          success: function(data) {
             console.log('data', data);
+            if (data === "../index.html" || data === "../error.html") {
+               CheckCookie(data);
+            }
          },
          error: function(data) {
             console.log('error', data);
