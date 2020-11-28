@@ -48,11 +48,5 @@ class Authentication
 
       return $isValid;
    }
-
-   public function Logout()
-   {
-      //logout
-   }
-
 }
 ?>

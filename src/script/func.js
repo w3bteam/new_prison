@@ -25,6 +25,9 @@ function ParseJSON(data)
 
 function CheckCookie(location = "../index.html")
 {
+   if (document.cookie.includes("name")) {
+      return;
+   }
    if (document.cookie != "") {
       console.log(document.cookie);
       return;
