@@ -24,7 +24,7 @@ if (isset($_POST["name_signin"])) {
          if (!isset($_SESSION)) {
             session_start();
          }
-         header("Location: ../homepage.html");
+         echo "../homepage.html";
       } else {
          //Здесь надо будет переделать хэндл ошибки
          echo "Password or username is incorrect";
