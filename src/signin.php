@@ -2,8 +2,6 @@
 
 ob_start();
 
-setcookie("name", "", time() - 8400);
-
 require_once 'obj/Players.php';
 require_once 'obj/Database.php';
 require_once 'obj/Authenticate.php';
@@ -25,7 +23,7 @@ if (isset($_POST["name_signin"])) {
             session_start();
          }
          setcookie("name", $userSignIn, time() + (86400 * 30));
-         echo "../homepage.html";
+         echo "../";
       } else {
          //Здесь надо будет переделать хэндл ошибки
          echo "Password or username is incorrect";

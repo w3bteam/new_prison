@@ -1,4 +1,6 @@
-import { CheckCookie } from './func.js';
+import { GoToHomepage } from './func.js';
+
+GoToHomepage("../");
 
 $(document).ready(function()
 {
@@ -10,9 +12,7 @@ $(document).ready(function()
          data: $( '#data' ).serialize(),
          success: function(data) {
             console.log('data', data);
-            if (data === "../homepage.html") {
-               CheckCookie(data);
-            }
+            GoToHomepage(data);
          },
          error: function(data) {
             console.log(data);

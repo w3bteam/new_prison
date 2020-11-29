@@ -2,9 +2,10 @@ import { ParseJSON, CheckCookie } from './func.js';
 
 var jsonArrForTable;
 
+CheckCookie();
+
 $(document).ready(function()
 {
-   CheckCookie();
    $.get("../players_table.php", function(data) {
       console.log(data);
       jsonArrForTable = ParseJSON(data);

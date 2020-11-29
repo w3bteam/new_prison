@@ -10,7 +10,7 @@ $(document).ready(function()
          data: $(this).serialize(),
          success: function(data) {
             console.log('data', data);
-            if (data === "../index.html" || data === "../error.html") {
+            if (data === "../login.html" || data === "../error.html") {
                CheckCookie(data);
             }
          },
