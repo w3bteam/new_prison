@@ -1,6 +1,6 @@
 <?php
 
-setcookie("user", "", time() - 3600);
+setcookie("name", "", time() - 8400);
 header("Location: index.html");
 session_destroy();
 
