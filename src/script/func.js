@@ -1,6 +1,6 @@
 //различные функции
 
-function ParseJSON(data)
+export function ParseJSON(data)
 {
    var json = JSON.stringify(data);
    json = json.slice(1);
@@ -23,11 +23,23 @@ function ParseJSON(data)
    return jsonArr;
 }
 
-function CheckCookie(location = "../index.html")
+export function GoToHomepage(location = "")
+{
+   if (location != "../") {
+      return;
+   }
+
+   if (document.cookie.includes("name")) {
+      window.location.href = location;
+   }
+}
+
+export function CheckCookie(location = "../login.html")
 {
    if (document.cookie.includes("name")) {
       return;
    }
+
    if (document.cookie != "") {
       console.log(document.cookie);
       return;
@@ -35,5 +47,3 @@ function CheckCookie(location = "../index.html")
       window.location.href = location;
    }
 }
-
-export { ParseJSON, CheckCookie };
