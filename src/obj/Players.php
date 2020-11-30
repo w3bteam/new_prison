@@ -27,6 +27,13 @@ class Player
       $this->id = 0;
    }
 
+   public function __construct($db, $username, $result = 0)
+   {
+      $this->database = $db;
+      $this->username = $username;
+      $this->result = $result;
+   }
+
    public function Add()
    {
       try {
@@ -53,9 +60,9 @@ class Player
       }
    }
 
-   public function Verificate()
+   private function Verificate()
    {
-      //верификация по почте(под вопросом)
+
    }
 
    public function Validate()
@@ -76,9 +83,10 @@ class Admin extends Player
       //удаление всех игроков
    }
 
-   public function DataChangesForOtherUsers()
+   public function DataChangesForOtherUsers($user, $result)
    {
       //возможность изменений результатов всех игроков
+      Verificate($user);
    }
 
 }

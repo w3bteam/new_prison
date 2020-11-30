@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Admin</title>
+    <!-- jQuery + Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="script/admin.js"></script>
+</head>
+
+<body>
+
+   <div id="overlay">
+      <div class="App">
+         <div class="vertical-center">
+             <div class="inner-block">
+                 <form action="admin.php" method="post" id="credential">
+                     <h3>Login</h3>
+                     <div class="form-group">
+                         <label>Username</label>
+                         <input type="text" class="form-control" name="admin_signin" id="admin_signin" />
+                     </div>
+
+                     <div class="form-group">
+                         <label>Password</label>
+                         <input type="password" class="form-control" name="password_signin" id="password_signin" />
+                     </div>
+
+                     <button type="submit" name="login" id="sign_in" class="btn btn-outline-primary btn-lg btn-block">Sign in</button>
+                 </form>
+             </div>
+         </div>
+      </div>
+   </div>
+
+   <div class="App">
+      <div class="vertical-center">
+          <div class="inner-block">
+              <form action="admin.php" method="post" id="data">
+                  <h3>Admin panel</h3>
+                  <div class="form-group">
+                      <label>Username</label>
+                      <input type="text" class="form-control" name="username" id="username" />
+                  </div>
+
+                  <div class="form-group">
+                      <label>Result</label>
+                      <input type="number" class="form-control" name="result" id="result" />
+                  </div>
+
+                  <button type="submit" name="change_button" id="change" class="btn btn-outline-primary btn-lg btn-block">Change result</button>
+                  <button type="submit" name="remove_button" id="remove" class="btn btn-outline-primary btn-lg btn-block">Remove user</button>
+                  <button type="submit" name="remove_all_button" id="remove_all" class="btn btn-outline-primary btn-lg btn-block">Remove all users</button>
+              </form>
+          </div>
+      </div>
+   </div>
+
+</body>
+
+
+</html>

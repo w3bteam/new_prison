@@ -24,16 +24,7 @@ if (isset($_POST["username"])) {
    $db->GetConnection();
    //echo $username . $email . $mobile . $pwd;
 
-   try {
-      $dbQuery = $db->connection->prepare('SELECT * FROM users WHERE username = :username');
-      $dbQuery->execute(array(':username' => $username));
-      $rowCount = $dbQuery->rowCount();
-
-      //echo "\n$rowCount";
-
-   } catch(PDOException $exception)  {
-      echo "Connection error: " . $exception->getMessage();
-   }
+   $rowCount = $db->Verificate();
 
 
    if(!empty($username) && !empty($email) &&

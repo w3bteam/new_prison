@@ -57,5 +57,23 @@ class Database
          echo "Error: " . $exception->getMessage();
       }
    }
+
+   public function Verificate()
+   {
+      $rowCount = null;
+
+      try {
+         $dbQuery = $db->connection->prepare('SELECT * FROM users WHERE username = :username');
+         $dbQuery->execute(array(':username' => $username));
+         $rowCount = $dbQuery->rowCount();
+
+         //echo "\n$rowCount";
+
+      } catch(PDOException $exception)  {
+         echo "Connection error: " . $exception->getMessage();
+      }
+
+      return $rowCount;
+   }
 }
 ?>
