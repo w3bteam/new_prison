@@ -6,7 +6,6 @@ if(!isset($_SESSION)) {
    session_start();
 }
 
-require_once 'obj/Database.php';
 require_once 'obj/Players.php';
 require_once 'obj/Error.php';
 
@@ -20,29 +19,23 @@ if (isset($_POST["username"])) {
    $mobile   = $_POST["mobilenumber"];
    $pwd      = $_POST["password"];
 
-   $db = new Database();
-   $db->GetConnection();
    //echo $username . $email . $mobile . $pwd;
 
-   try {
-      $dbQuery = $db->connection->prepare('SELECT * FROM users WHERE username = :username');
-      $dbQuery->execute(array(':username' => $username));
-      $rowCount = $dbQuery->rowCount();
-
-      //echo "\n$rowCount";
-
-   } catch(PDOException $exception)  {
-      echo "Connection error: " . $exception->getMessage();
-   }
+   $player = new Player($username);
+   $player->GetConnection();
+   $rowCount = $player->Verificate($username);
 
 
    if(!empty($username) && !empty($email) &&
       !empty($mobile) && !empty($pwd) && $rowCount == 0) {
 
-      $player = new Player($db->connection, $username, $email, $mobile, $pwd);
-      $player->Add();
+      $player->email = $email;
+      $player->mobile = $mobile;
+      $player->pwd = $password;
 
-      echo "../index.html";
+      $player->Add($player);
+
+      echo "../login.html";
 
    } else {
       if($rowCount > 0) {
@@ -70,8 +63,6 @@ if (isset($_POST["username"])) {
          echo "\n5 $err";
       }
    }
-
-   $db->connection = null;
 
 } else {
    echo "../error.html";
