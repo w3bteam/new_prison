@@ -37,6 +37,27 @@
        </div>
    </nav>
 
+   <div id="overlay">
+      <div class="vertical-center">
+          <div class="inner-block">
+             <form action="signin.php" method="post" id="data">
+                  <h3>Login</h3>
+                  <div class="form-group">
+                      <label>Username</label>
+                      <input type="text" class="form-control" name="name_signin" id="name_signin" />
+                  </div>
+
+                  <div class="form-group">
+                      <label>Password</label>
+                      <input type="password" class="form-control" name="password_signin" id="password_signin" />
+                  </div>
+
+                  <button type="submit" name="login" id="sign_in" class="btn btn-outline-primary btn-lg btn-block">Sign in</button>
+             </form>
+          </div>
+      </div>
+   </div>
+
    <table id="players" class="table">
      <thead class="thead-dark">
        <tr>
