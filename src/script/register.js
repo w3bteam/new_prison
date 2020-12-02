@@ -1,4 +1,6 @@
-import { CheckCookie } from './func.js';
+import { CheckCookie, GoToHomepage } from './func.js';
+
+GoToHomepage("../");
 
 $(document).ready(function()
 {

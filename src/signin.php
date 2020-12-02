@@ -2,10 +2,7 @@
 
 ob_start();
 
-require_once 'obj/Players.php';
-require_once 'obj/Database.php';
 require_once 'obj/Authenticate.php';
-require_once 'obj/Error.php';
 
 if (isset($_POST["name_signin"])) {
    $userSignIn = $_POST["name_signin"];

@@ -14,10 +14,13 @@ $(document).ready(function()
          event.preventDefault();
          $.ajax({
             type: 'POST',
-            url: '../admin.php',
+            url: '../signin.php',
             data: $( '#credential' ).serialize(),
             success: function(data) {
                console.log('data', document.cookie);
+               if (data == "Good") {
+                  document.getElementById("overlay").style.display = "none";
+               }
                //GoToHomepage(data);
             },
             error: function(data) {

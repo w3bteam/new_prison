@@ -29,14 +29,14 @@ export function GoToHomepage(location = "")
       return;
    }
 
-   if (document.cookie.includes("name")) {
+   if (document.cookie.includes("name=")) {
       window.location.href = location;
    }
 }
 
 export function CheckCookie(location = "../login.html")
 {
-   if (document.cookie.includes("name")) {
+   if (document.cookie.includes("name=")) {
       return;
    }
 

@@ -3,8 +3,7 @@
 ob_start();
 
 require_once 'obj/Authenticate.php';
-require_once 'obj/Database.php';
-require_once 'obj/Players.php';
+require_once 'obj/Admin.php';
 
 if (isset($_POST["admin_signin"])) {
    $adminSignIn = $_POST["admin_signin"];
@@ -42,24 +41,26 @@ if (isset($_GET["method"])) {
 
    $method = $_GET["method"];
 
-   $db = new Database();
-   $db->GetConnection();
-
-   $admin = new Admin($db, $username);
+   $admin = new Admin();
+   $admin->GetConnection();
 
    switch($method) {
       case "change":
+         if (!isset($_GET["username"]) || !isset($_GET["result"])) {
+            break;
+         }
          $username = $_GET["username"];
          $result = $_GET["result"];
-         $player->DataChangesForOtherUsers($username, $result);
+         $admin->UpdateScoreAdmin($username, $result);
          break;
 
       case "remove":
          $username = $_GET["username"];
-         $pl
+         $admin->Delete($username);
          break;
 
       case "remove_all":
+         $admin->DeleteAllUsers();
          break;
    }
 }

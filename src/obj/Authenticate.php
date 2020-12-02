@@ -24,8 +24,12 @@ class Authentication
       $db->GetConnection();
 
       try {
-         $dbQuery = $db->connection->prepare('SELECT * FROM :table WHERE username = :username');
-         $dbQuery->execute(array(':table' => $this->table, ':username' => $this->username));
+         if($this->table == "users") {
+            $dbQuery = $db->connection->prepare('SELECT * FROM users WHERE username=:username');
+         } else {
+            $dbQuery = $db->connection->prepare('SELECT * FROM admins WHERE username=:username');
+         }
+         $dbQuery->execute(array(':username' => $this->username));
 
          while ($row = $dbQuery->fetch(PDO::FETCH_ASSOC)) {
 
@@ -44,11 +48,19 @@ class Authentication
          echo "Error: " . $exception->getMessage();
       }
 
-      $isValid = password_verify($this->verifyPass, $this->passHash);
+      if ($this->table == "admins") {
+         $db->connection = null;
+         return $this->verifyPass == $this->passHash;
+      } else {
+         $db->connection = null;
+         return password_verify($this->verifyPass, $this->passHash);
+      }
+
+      /*$isValid = password_verify($this->verifyPass, $this->passHash);
 
       $db->connection = null;
 
-      return $isValid;
+      return $isValid;*/
    }
 }
 ?>
