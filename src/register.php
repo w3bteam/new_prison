@@ -31,7 +31,7 @@ if (isset($_POST["username"])) {
 
       $player->email = $email;
       $player->mobile = $mobile;
-      $player->pwd = $password;
+      $player->password = $pwd;
 
       $player->Add($player);
 

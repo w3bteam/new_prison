@@ -60,7 +60,7 @@ if (isset($_GET["method"])) {
          break;
 
       case "remove_all":
-         $admin->DeleteAllUsers();
+         $admin->DeleteAll();
          break;
    }
 }

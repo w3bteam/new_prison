@@ -23,7 +23,7 @@ class Admin extends Database
    {
       try {
          $dbQuery = $this->connection->prepare('DELETE FROM users');
-         $dbQuery->execute(array(':result' => $result, ':id' => $playerID));
+         $dbQuery->execute();
       } catch (PDOException $exception) {
          echo "Connection error: " . $exception->getMessage();
       }

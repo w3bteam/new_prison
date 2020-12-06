@@ -40,6 +40,10 @@ export function CheckCookie(location = "../login.html")
       return;
    }
 
+   if (document.cookie.includes("admin=")) {
+      window.location.href = location;
+   }
+
    if (document.cookie != "") {
       console.log(document.cookie);
       return;
