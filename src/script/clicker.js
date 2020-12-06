@@ -73,7 +73,7 @@ $(document).on('click', 'body', function(event) {
             data: {usr: cookieValue, incr: incrementToWrite},
             success: function(data) {
 
-               window.alert("Ajax script success!!!");
+               //window.alert("Ajax script success!!!");
                console.log('data', data);
                if (data === "../login.html" || data === "../error.html") {
                   CheckCookie(data);
